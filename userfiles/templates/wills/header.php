@@ -9,19 +9,14 @@
 <script type="text/javascript" src="<? print TEMPLATE_URL ?>vertical_files/jquxery-1.js"></script>
 <script type="text/javascript" src="<? print TEMPLATE_URL ?>js/validations.js"></script>
 <script type="text/javascript" src="<? print TEMPLATE_URL ?>js/jScrollPane.js"></script>
-<script type="text/javascript" src="<? print TEMPLATE_URL ?>carousel/tools.js"></script>
-<script type="text/javascript" src="<? print TEMPLATE_URL ?>vertical_files/jquery.js"></script>
+<!--<script type="text/javascript" src="<? print TEMPLATE_URL ?>carousel/tools.js"></script>
+--><script type="text/javascript" src="<? print TEMPLATE_URL ?>vertical_files/jquery.js"></script>
 <script type="text/javascript" src="<? print TEMPLATE_URL ?>vertical_files/apps1.js"></script>
 <link rel="stylesheet" href="<? print TEMPLATE_URL ?>css/general.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="<? print TEMPLATE_URL ?>css/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="<? print TEMPLATE_URL ?>css/jScrollPane.css" type="text/css" media="screen" />
 <!--[if IE 7]><link rel="stylesheet" href="<? print TEMPLATE_URL ?>css/ie.css" type="text/css" media="screen" /><![endif]-->
 <!--[if IE 8]><link rel="stylesheet" href="<? print TEMPLATE_URL ?>css/ie8.css" type="text/css" media="screen" /><![endif]-->
-
-
- 
-
-
 <style>
 body {
 	height:100%;
@@ -54,6 +49,10 @@ body {
 .selected {
 	background:#fff;
 	font-weight:700;
+}
+
+#fssList {
+ display:none;	
 }
 </style>
 <script type="text/javascript">
@@ -228,7 +227,7 @@ $(document).ready(function() {
 
 	</script>
 <script type="text/javascript">
-		$(function(){
+		/*$(document).ready(function(){
 
 			if($('.images .image').length == 1){
 				$('.carousel_nav').addClass('hidden');
@@ -245,8 +244,37 @@ $(document).ready(function() {
 			});
 
 			$('.carousel_nav').data('slideshow').play();
-		});
+		});*/
 	</script>
+    <script type="text/javascript" src="<? print TEMPLATE_URL ?>/slider/fadeSlideShow.js"></script>
+    <script type="text/javascript">
+jQuery(document).ready(function(){
+	jQuery('.images').fadeSlideShow(
+									
+									{
+										
+										width: 970, // default width of the slideshow
+height: 178, // default height of the slideshow
+speed: 'slow', // default animation transition speed
+interval: 3000, // default interval between image change
+PlayPauseElement: 'fssPlayPause', // default css id for the play / pause element
+PlayText: 'Play', // default play text
+PauseText: 'Pause', // default pause text
+NextElement: 'fssNext', // default id for next button
+NextElementText: 'Next >', // default text for next button
+PrevElement: 'fssPrev', // default id for prev button
+PrevElementText: '< Prev', // default text for prev button
+ListElement: 'fssList', // default id for image / content controll list
+ListLi: 'fssLi', // default class for li's in the image / content controll
+ListLiActive: 'fssActive', // default class for active state in the controll list
+addListToId: false, // add the controll list to special id in your code - default false
+allowKeyboardCtrl: true, // allow keyboard controlls left / right / space
+autoplay: true // autoplay the slideshow
+										
+										}
+									);
+});
+</script>
 <script type="text/javascript">
 
 //var img_url = '<? print TEMPLATE_URL ?>/img/'
@@ -306,22 +334,58 @@ $(document).ready(function() {
     </div>
     <div class="relativeContainerHome">
       <div id="carousel" class="carouselHome">
+       
+       
+       <?
+	   $pics = get_pictures(PAGE_ID, $for = 'post', $media_type = false, $queue_id = false, $collection = false);
+	   
+	   if(empty($pics)){
+		 	   $pics = get_pictures(MAIN_PAGE_ID, $for = 'post', $media_type = false, $queue_id = false, $collection = false);		   
+	   }
+	   
+	   if(empty($pics)){
+		 	   $pics = get_pictures(HOME_PAGE_ID, $for = 'post', $media_type = false, $queue_id = false, $collection = false);		   
+	   }
+	  // if() ?>
+       
         <div class="images">
-          <div style="display: none;" class="image"><img src="<? print TEMPLATE_URL ?>images/carouselHome.jpg" alt="" style=""/></div>
+        <? if(!empty($pics)): ?>
+        <? foreach($pics as $pic): ?>
+        
+          <div style="background-image:url('<? print $pic['urls']['original']; ?>')" class="image">
+            <div class="image_text">
+              <? print($pic['media_description']); ?>
+            </div>
+          </div>
+        
+        <? endforeach; ?>
+        <? endif; ?>
+        
+        
+          
           <div class="carousel_nav"> <a href="#"></a> </div>
         </div>
       </div>
+      
+      
+      
+      
       <div class="menuSecond">
         <div class="leftHolder"></div>
-        <div class="centerHolder"> <a href="#" title="HOW CAN WE HELP YOU TO MANAGE YOUR WEALTH?">HOW CAN WE HELP YOU TO MANAGE YOUR WEALTH?</a>
-          <div class="subscribeBoxHolder">
-            <form class="subscribeForm" action="?">
-              <span>SUBSCRIBE FOR NEWSLETTER</span>
-              <input type="text" value = "Type your e-mail here" onclick="value=''" onblur="this.value=!this.value?'Type your e-mail here':this.value;" />
-              <input type="submit" class="Submit" value = "SUBSCRIBE"/>
-              <div class="clear"></div>
-            </form>
-          </div>
+        <div class="centerHolder">
+          <table width="100%" border="0">
+            <tr valign="middle">
+              <td><editable  rel="page" field="custom_field_subscribe_teaser" page_id="<? print HOME_PAGE_ID ?>"> <a href="#">HOW CAN WE HELP YOU TO MANAGE YOUR WEALTH?</a> </editable></td>
+              <td><div class="subscribeBoxHolder">
+                  <form class="subscribeForm" action="?">
+                    <span>SUBSCRIBE FOR NEWSLETTER</span>
+                    <input type="text" value = "Type your e-mail here" onclick="value=''" onblur="this.value=!this.value?'Type your e-mail here':this.value;" />
+                    <input type="submit" class="Submit" value = "SUBSCRIBE"/>
+                    <div class="clear"></div>
+                  </form>
+                </div></td>
+            </tr>
+          </table>
           <div class="clear"></div>
         </div>
         <div class="rightHolder"></div>

@@ -56,7 +56,8 @@ if (defined ( 'INTERNAL_API_CALL' ) == true) {
 		if (trim ( $url ) == '') {
 			//	
 			$page = CI::model ( 'content' )->getContentHomepage ();
-			//	var_dump($page);
+		
+	//	var_dump($page);
 		} else {
 			
 			if ($page ['is_home'] != 'y') {
@@ -87,7 +88,8 @@ if (defined ( 'INTERNAL_API_CALL' ) == true) {
 					//$page = CI::model ( 'content' )->getPageByURLAndCache ( $url );
 					safe_redirect ( site_url ( $url ) );
 					exit ();
-					//p($new_page_conf,1);
+				
+	//p($new_page_conf,1);
 				
 
 				//	p ( TEMPLATES_DIR . 'layouts/' . $url );
@@ -96,12 +98,14 @@ if (defined ( 'INTERNAL_API_CALL' ) == true) {
 				} else {
 					return false;
 				}
-				//p ( $url, 1 );
+			
+	//p ( $url, 1 );
 			} else {
 				
 				return false;
 			}
-			//exit ( '404: Nothing found on line ' . __LINE__ );
+		
+	//exit ( '404: Nothing found on line ' . __LINE__ );
 		}
 		
 		/*if (is_readable ( TEMPLATES_DIR . 'layouts/' . $content ['content_layout_file'] ) == true) {
@@ -123,29 +127,38 @@ if (defined ( 'INTERNAL_API_CALL' ) == true) {
 			}
 		}
 		
-	if (defined ( 'MAIN_PAGE_ID' ) == false) {
-			$par =  CI::model('content')->getParentPagesIdsForPageIdAndCache($page ['id']);
-//p($par );
-			$last =  end($par); // last
-			if($last == 0){
+		if (defined ( 'MAIN_PAGE_ID' ) == false) {
+			$par = CI::model ( 'content' )->getParentPagesIdsForPageIdAndCache ( $page ['id'] );
+			//p($par );
+			$last = end ( $par ); // last
+			if ($last == 0) {
 				$last = $page ['id'];
 			}
-//p($last );
-define ( 'MAIN_PAGE_ID', $last );
+			//p($last );
+			define ( 'MAIN_PAGE_ID', $last );
+		}
+		if (defined ( 'HOME_PAGE_ID' ) == false) {
+			$h = CI::model ( 'content' )->getContentHomepage ();
+			//p($par );
+			
+
+			if (! empty ( $h )) {
+				$last = $h ['id'];
+				define ( 'HOME_PAGE_ID', $last );
+			
+	//p($last );
 			}
 		
-			
-		
+		}
 		
 		if (empty ( $post )) {
 			$content = $page;
 		} else {
-					$post['content_body'] = html_entity_decode($post['content_body']);
-			
+			$post ['content_body'] = html_entity_decode ( $post ['content_body'] );
+		
 		}
 		
-		$page['content_body'] = html_entity_decode($page['content_body']);
-		
+		$page ['content_body'] = html_entity_decode ( $page ['content_body'] );
 		
 		if (user_id () != false) {
 			//$full_page = get_page ( $page ['id'] );
@@ -246,10 +259,10 @@ define ( 'MAIN_PAGE_ID', $last );
 		}
 		
 		//if ( empty ( $subdomain_user )) {
-		if (strtolower($content ['content_layout_file']) == 'inherit') {
+		if (strtolower ( $content ['content_layout_file'] ) == 'inherit') {
 			$content ['content_layout_file'] = '';
 		}
-
+		
 		if ($content ['content_layout_file'] != '') {
 			
 			//$this->template ['title'] = 'adasdsad';
@@ -298,8 +311,8 @@ define ( 'MAIN_PAGE_ID', $last );
 									$use_the_parent_page_layout_name = $parent_page_info ['content_layout_name'];
 									$skip_layout_load1 = true;
 									$content ['content_layout_name'] = $parent_page_info ['content_layout_name'];
-									
-								//}
+								
+	//}
 								}
 							}
 						}
@@ -352,8 +365,8 @@ define ( 'MAIN_PAGE_ID', $last );
 			
 			$layout = $this->load->file ( $layout, true );
 			$layout = CI::model ( 'template' )->parseMicrwoberTags ( $layout );
-			
-		//
+		
+	//
 		}
 		//	p($page);
 		
@@ -406,8 +419,8 @@ define ( 'MAIN_PAGE_ID', $last );
 						//print($content ['content_body']);
 						$layout = str_ireplace ( '{content}', $content_filename1, $layout );
 						$layout = str_ireplace ( '{content_body_filename}', $content_filename1, $layout );
-						
-					//$v = htmlspecialchars_decode ( $v );
+					
+	//$v = htmlspecialchars_decode ( $v );
 					}
 				}
 			
@@ -472,7 +485,6 @@ define ( 'MAIN_PAGE_ID', $last );
 		}
 		
 		$stats_js = CI::model ( 'stats' )->get_js_code ();
-	 
 		
 		$layout = CI::model ( 'template' )->parseMicrwoberTags ( $layout );
 		
@@ -482,14 +494,10 @@ define ( 'MAIN_PAGE_ID', $last );
 
 		$editmode = CI::library ( 'session' )->userdata ( 'editmode' );
 		
-		
-		
-		
 		// DISABLING EDITMODE till its finished
-	//	$editmode = false;
+		//	$editmode = false;
 		
-		
-		
+
 		if ($editmode == true) {
 			$is_admin = is_admin ();
 			if ($is_admin == true) {
@@ -512,11 +520,10 @@ define ( 'MAIN_PAGE_ID', $last );
 		if (is_file ( $r )) {
 			$res = $this->load->file ( $r, true );
 			if ($res != false) {
- 
-					$layout = str_replace ( '</ head>', '</head>', $layout ); //some developers put spaces
-				 
-					
-					
+				
+				$layout = str_replace ( '</ head>', '</head>', $layout ); //some developers put spaces
+				
+
 				$layout = str_replace ( '</head>', $res . '</head>', $layout );
 			}
 		}
@@ -551,7 +558,7 @@ define ( 'MAIN_PAGE_ID', $last );
 			
 			CI::library ( 'output' )->set_output ( $layout );
 		}
-		
+	
 	//var_dump($_SERVER);
 	
 

@@ -74,7 +74,7 @@ body{background:#c1c1c1 url("../images/bckgrBody.jpg") 0px 0px repeat-x;}
 			.wrapTop  .wrapNavigation{padding:0px; margin:0px 10px} 
 				.wrapTop  .wrapNavigation .Navigation{background:url("../images/bckgrNavigation.png") 0px 0px repeat-x; border-bottom:1px solid #fff;height:42px;  }
 				.wrapTop .relativeContainer{position:relative; height:184px}
-				.wrapTop .relativeContainerHome{position:relative; height:316px}
+				.wrapTop .relativeContainerHome{position:relative; height:230px}
 					.wrapTop .relativeContainerHome img{position:absolute; left:10px; top:0px; z-index:2}
 					.wrapTop .relativeContainer img{position:absolute; left:10px; top:0px; z-index:2}
 	.wrapVideo .wrapContent{ width:962px; padding:0px 21px; }
@@ -507,24 +507,39 @@ span.found {display:inline-block; padding:1px 3px; background-color:#D2B48C; col
 	}
 
 #carousel .images{
-		height: 132px; width:962px;
+		height: 178px; width:962px;
 	position: relative;
 	z-index: 10;
     overflow: hidden;
 }
 
 .carouselHome .images{
-		height: 264px !important;
+		/*height: 264px !important;*/
 	}
 #carousel .images .image{
-	display: none;
+	/*display: none;*/
 	position:absolute; 
-	top:0px; left:-10px;	height: 132px; width:962px;
+	top:0px; left:0px;	
+	height: 178px; 
+	width:970px;
 
 }
 
+#carousel .images .image .image_text{
+	 color: #024573;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+	top:50px; left:30px;	
+	 font-size:30px;
+	 line-height: 30px;
+	 position:relative;
+	 width:500px;
+
+}
+
+
+
 .carouselHome .images .image{
-		height: 264px !important;
+		/*height: 264px !important;*/
 	}
 .carousel_nav{
 	width: 619px; 

@@ -393,7 +393,8 @@ class Core_model extends Model {
 			
 			}
 			$this->cleanCacheGroup ( 'taxonomy/global' );
-			//exit ();
+		
+		//exit ();
 		}
 		
 		if (($original_data ['taxonomy_tags_csv']) != '') {
@@ -474,7 +475,7 @@ class Core_model extends Model {
 			$this->mediaUploadVideos ( $table_assoc_name, $id_to_return );
 			
 			$this->mediaUploadFiles ( $table_assoc_name, $id_to_return );
-			
+		
 		//$this->mediaFixOrder ( $to_table, $to_table_id, 'picture' );
 		
 
@@ -515,8 +516,8 @@ class Core_model extends Model {
 						$custom_field_to_save [$k1] = $v;
 					
 					}
-					
-				//}
+				
+		//}
 				}
 			
 			}
@@ -534,8 +535,8 @@ class Core_model extends Model {
 					$custom_field_to_delete ['to_table'] = $table_assoc_name;
 					
 					$custom_field_to_delete ['to_table_id'] = $id_to_return;
-					
-				//	$this->deleteData ( $custom_field_table, $custom_field_to_delete, 'custom_fields' );
+				
+		//	$this->deleteData ( $custom_field_table, $custom_field_to_delete, 'custom_fields' );
 				
 
 				//$clean = " delete from $custom_field_table where to_table is null or   to_table_id is null ";
@@ -721,7 +722,8 @@ class Core_model extends Model {
 					
 					$dir = $this->_getCacheDir ( 'log/global/' );
 					@touch ( $dir . 'skip_cache.php' );
-					//p($dir);
+				
+		//p($dir);
 				
 
 				}
@@ -790,8 +792,8 @@ class Core_model extends Model {
 				} else {
 					
 					$v = str_ireplace ( $site, '{SITE_URL}', $v );
-					
-				//$v = addslashes ( $v );
+				
+		//$v = addslashes ( $v );
 				//$v = htmlspecialchars ( $v, ENT_QUOTES, 'UTF-8' );
 				}
 				
@@ -824,8 +826,8 @@ class Core_model extends Model {
 					
 					//var_dump( $v);
 					$v = str_ireplace ( '{SITE_URL}', $site, $v );
-					
-				//var_dump( $v);
+				
+		//var_dump( $v);
 				//exit;
 				//$v = addslashes ( $v );
 				//$v = htmlspecialchars ( $v, ENT_QUOTES, 'UTF-8' );
@@ -1444,7 +1446,8 @@ class Core_model extends Model {
 			# Eliminate current directory, parent directory
 			if (ereg ( '^\.{1,2}$', $fn ))
 				continue;
-				# Eliminate other pages not in pattern
+			
+		# Eliminate other pages not in pattern
 			if (! ereg ( $pattern, $fn ))
 				continue;
 			$timedat = filemtime ( "$dir/$fn" );
@@ -1452,7 +1455,8 @@ class Core_model extends Model {
 				$newstamp = $timedat;
 				$newname = $fn;
 			}
-			//}
+		
+		//}
 		}
 		# $timedat is the time for the latest file
 		# $newname is the name of the latest file
@@ -1548,12 +1552,13 @@ class Core_model extends Model {
 								 post_id = '{$data_to_save ['post_id']}'
 								 and param='{$data_to_save ['param']}'
 								   ";
-				
-				//		p($q);
-				
-
-				//$q = $this->dbQ ( $q );
 			
+		//		p($q);
+			
+
+			//$q = $this->dbQ ( $q );
+			
+
 			}
 		}
 		
@@ -1997,8 +2002,8 @@ class Core_model extends Model {
 						
 
 						$includeIds [] = $itm ['to_table_id'];
-						
-					//  }
+					
+		//  }
 					
 
 					//
@@ -2030,7 +2035,7 @@ class Core_model extends Model {
 		if (! empty ( $criteria ['only_those_fields'] )) {
 			
 			$only_those_fields = $criteria ['only_those_fields'];
-			
+		
 		//unset($criteria['only_those_fields']);
 		//no unset xcause f cache
 		}
@@ -2048,7 +2053,7 @@ class Core_model extends Model {
 		if (! empty ( $criteria ['exclude_ids'] )) {
 			
 			$exclude_ids = $criteria ['exclude_ids'];
-			
+		
 		//unset($criteria['only_those_fields']);
 		//no unset xcause f cache
 		}
@@ -2070,7 +2075,7 @@ class Core_model extends Model {
 		if (strval ( trim ( $criteria ['search_by_keyword'] ) ) != '') {
 			
 			$to_search = trim ( $criteria ['search_by_keyword'] );
-			
+		
 		//p($to_search,1);
 		}
 		
@@ -2121,8 +2126,8 @@ class Core_model extends Model {
 			$cache_content = $this->cacheGetContentAndDecode ( $original_cache_id, $original_cache_group );
 			
 			if ($cache_group == 'taxonomy') {
-				
-			//var_dump($cache_content);
+			
+		//var_dump($cache_content);
 			}
 			
 			if (($cache_content) != false) {
@@ -2174,10 +2179,10 @@ class Core_model extends Model {
 		$criteria = $this->mapArrayToDatabaseTable ( $table, $criteria );
 		
 		if (! empty ( $criteria )) {
-			
+		
 		//$query = $this->db->get_where ( $table, $criteria, $limit, $offset );
 		} else {
-			
+		
 		//$query = $this->db->get ( $table, $limit, $offset );
 		}
 		
@@ -2251,8 +2256,8 @@ class Core_model extends Model {
 						
 
 						$where .= " $v REGEXP '$to_search' " . $where_post;
-						
-					// 'new\\*.\\*line';
+					
+		// 'new\\*.\\*line';
 					
 
 					//$where .= " MATCH($v) AGAINST ('*$to_search* in boolean mode')  " . $where_post;
@@ -2418,7 +2423,7 @@ class Core_model extends Model {
 		//$stmt = CI::db()->query ( $q );
 		//$result = $stmt->fetchAll ();
 		if ($count_only == true) {
-			
+		
 		//var_dump ( $q );
 		//exit ();
 		}
@@ -2607,8 +2612,8 @@ class Core_model extends Model {
 					}
 					
 					if ($table_assoc_name != 'table_taxonomy') {
-						
-					//todo
+					
+		//todo
 					}
 				
 				}
@@ -3147,8 +3152,8 @@ class Core_model extends Model {
 						$qLimit .= "OFFSET {$page_start} ";
 					
 					}
-					
-				//$qLimit .= "LIMIT {$page_start}, {$page_end}";
+				
+		//$qLimit .= "LIMIT {$page_start}, {$page_end}";
 				}
 			
 			}
@@ -3344,7 +3349,7 @@ class Core_model extends Model {
 				}
 			
 			}
-			
+		
 		//		$wheres [] = "\n {$q} ";
 		
 
@@ -3458,8 +3463,8 @@ class Core_model extends Model {
 								
 
 								$includeIds [] = $itm ['to_table_id'];
-								
-							//  }
+							
+		//  }
 							
 
 							//
@@ -3589,8 +3594,8 @@ class Core_model extends Model {
 									$qSelect .= "\n\t{$q}";
 									
 									$qHaving_a [] = ' commented > 0  ';
-									
-								//
+								
+		//
 								} else {
 									
 									$q = " and id IN (SELECT (to_table_id) from $table_comments where
@@ -3662,8 +3667,8 @@ class Core_model extends Model {
 							break;
 					
 					}
-					
-				//}
+				
+		//}
 				
 
 				}
@@ -3762,7 +3767,8 @@ class Core_model extends Model {
 					list ( $statement, $connection ) = $where;
 					
 					$qWhere .= "\n\t{$where[0]} {$where[1]}";
-					//p ( $qWhere );
+				
+		//p ( $qWhere );
 				
 
 				}
@@ -3784,7 +3790,8 @@ class Core_model extends Model {
 				$qWhere = rtrim ( $qWhere, " {$item}" );
 			
 			}
-			//p($qWhere);
+		
+		//p($qWhere);
 		
 
 		//$qWhere .= "\n\t id is not null  ";
@@ -3842,8 +3849,8 @@ class Core_model extends Model {
 			$qOrder = rtrim ( $qOrder, ',' );
 			
 			if (! $getCount) {
-				
-			//$qOrder .= "\n\t{$orderby1 [0]} {$orderby1 [1]}";
+			
+		//$qOrder .= "\n\t{$orderby1 [0]} {$orderby1 [1]}";
 			} else {
 				
 				switch ($orderby1 [0]) {
@@ -4397,7 +4404,7 @@ class Core_model extends Model {
 			return ($memory);
 		
 		} else {
-			
+		
 		//print 'nomem';
 		}
 		
@@ -4803,7 +4810,8 @@ class Core_model extends Model {
 		
 		} else {
 			$sNewText = str_replace ( $sRegExpPattern, $sRegExpReplacement, $sVeryLongText );
-			//$sNewText = preg_replace($sRegExpPattern,$sRegExpReplacement, $sVeryLongText);
+		
+		//$sNewText = preg_replace($sRegExpPattern,$sRegExpReplacement, $sVeryLongText);
 		
 
 		}
@@ -5094,8 +5102,8 @@ $w
 			return $job;
 		
 		}
-		
-	//
+	
+		//
 	}
 	
 	function extractEmailsFromString($string) {
@@ -5411,9 +5419,10 @@ $w
 				return false;
 			
 			} else {
-				
-				return $cache_content;
 			
+		//	return $cache_content;
+			
+
 			}
 		
 		}
@@ -5436,9 +5445,6 @@ $w
 		
 		$table = $cms_db_tables ['table_media'];
 		
-		//	p ( $id );
-		
-
 		if ($id != 'no_picture') {
 			
 			if (intval ( $id ) == 0) {
@@ -5487,8 +5493,9 @@ $w
 				foreach ( $media_get as $item ) {
 					
 					//	p($item);
-					
-
+					$file_path = MEDIAFILES . 'pictures/original/' . $item ['filename'];
+					//p($file_path);		
+					//if(is_file($file_path)
 					switch ($item ['media_type']) {
 						
 						case 'picture' :
@@ -5619,17 +5626,36 @@ $w
 									//CI::library ( 'image_lib' )->initialize ( $config );
 									//$this->load->library ( 'image_lib', $config );
 									//CI::library ( 'image_lib' )->resize ();
+									//p($file_path);
+									$fs = filesize ( $file_path );
+									if ($fs == 0) {
+										unlink ( $file_path );
+										$this->mediaDelete ( $item ['id'] );
+									} else {
+										//	
+										//	$fsize = file 
+										
+
+										try {
+											
+											$resizeObj = new resize ( $file_path );
+											
+											// *** 2) Resize image (options: exact, portrait, landscape, auto, crop)
+											$resizeObj->resizeImage ( $size, $size_height, auto );
+											
+											// *** 3) Save image
+											$resizeObj->saveImage ( $new_filename, 100 );
+										} catch ( Exception $e ) {
+											//copy($file_path, $new_filename);
+											p ( $item, 1 );
+											$this->mediaDelete ( $item ['id'] );
+										
+		// $new_filename = $file_path;
+										}
+									}
+									// *** 1) Initialise / load image
 									
 
-									// *** 1) Initialise / load image
-									$resizeObj = new resize ( $file_path );
-									
-									// *** 2) Resize image (options: exact, portrait, landscape, auto, crop)
-									$resizeObj->resizeImage ( $size, $size_height, auto );
-									
-									// *** 3) Save image
-									$resizeObj->saveImage ( $new_filename, 100 );
-									
 									//$this->image_lib->resize ();
 									
 
@@ -5646,8 +5672,8 @@ $w
 									//	var_dump($e);
 									//print 'cant open image file' . $file_path;
 									}
-									
-								// do your manipulations
+								
+		// do your manipulations
 								
 
 								//if (! $this->image_lib->resize ()) {
@@ -5805,8 +5831,8 @@ $w
 								$src = str_ireplace ( '%', '-', $src );
 								
 								$src = str_ireplace ( '%', '-', $src );
-								
-							//	$data = array ();
+							
+		//	$data = array ();
 							//	$data ['url'] = $this->mediaGetUrlDir () . 'pictures/original/' . $item ['filename'];
 							////	$data ['id'] = $item ['id'];
 							//	$data ['filename'] = $item ['filename'];
@@ -5830,8 +5856,8 @@ $w
 							break;
 					
 					}
-					
-				//$media_get_to_return[] = $item;
+				
+		//$media_get_to_return[] = $item;
 				}
 			
 			} else {
@@ -5845,8 +5871,6 @@ $w
 			$generate_no_picture_image = true;
 		
 		}
-		
-		
 		
 		if ($generate_no_picture_image == true) {
 			
@@ -5943,11 +5967,13 @@ $w
 					$config ['quality'] = '100%';
 					
 					$src = $new_filename_url;
-					
-//					$this->image_lib->initialize ( $config );
-					
+				
+		//					$this->image_lib->initialize ( $config );
+				
+
 				//	$this->image_lib->resize ();
 				
+
 				}
 			
 			}
@@ -6246,7 +6272,7 @@ $w
 					break;
 			
 			}
-			
+		
 		//$media_get_to_return[] = $item;
 		}
 		
@@ -6345,7 +6371,7 @@ $w
 				if ($cache_content == 'false') {
 					
 					return false;
-			 
+				
 				} else {
 					return $cache_content;
 				
@@ -6408,14 +6434,18 @@ $w
 				//var_dump($q);
 				//$q = $this->dbQuery ( $q, __FUNCTION__ . md5 ( $q ), $cache_group );
 				
+
 				//$q = $q [0] ['qty'];
 				
+
 				if (intval ( $q ) == 0) {
-					
-				//	$this->cacheWriteAndEncode ( 'false', $function_cache_id, $cache_group );
-					
+				
+		//	$this->cacheWriteAndEncode ( 'false', $function_cache_id, $cache_group );
+				
+
 				//	return false;
 				
+
 				}
 			
 			}
@@ -6427,9 +6457,10 @@ $w
 				//$q = $this->dbQuery ( $q );
 				//$q = $q [0] ['qty'];
 				if (intval ( $q ) == 0) {
-				//	$this->cacheWriteAndEncode ( 'false', $function_cache_id, $cache_group );
+					//	$this->cacheWriteAndEncode ( 'false', $function_cache_id, $cache_group );
 				//	return false;
 				
+
 				}
 			
 			}
@@ -6452,7 +6483,7 @@ $w
 		
 		//	var_dump ( $media_get );
 		if ($no_cache == false) {
-			
+		
 		//$cache_group = 'media/global';
 		
 
@@ -6597,7 +6628,7 @@ $w
 					break;
 			
 			}
-			
+		
 		//$media_get_to_return[] = $item;
 		}
 		
@@ -6797,7 +6828,7 @@ $w
 					break;
 			
 			}
-			
+		
 		//$media_get_to_return[] = $item;
 		}
 		
@@ -6968,7 +6999,7 @@ $w
 		$uploaded = array ();
 		
 		if (empty ( $_FILES )) {
-			
+		
 		//return false;
 		
 
@@ -6991,8 +7022,8 @@ $w
 					if (is_dir ( $path ) == false) {
 						
 						@mkdir ( $path );
-						
-					//@chmod ( $path, '0777' );
+					
+		//@chmod ( $path, '0777' );
 					}
 					$original_path = normalize_path ( $original_path, false );
 					$the_target_path = $target_path . '/original/';
@@ -7002,8 +7033,8 @@ $w
 					if (is_dir ( $the_target_path ) == false) {
 						
 						mkdir_recursive ( $the_target_path );
-						
-					//@chmod ( $the_target_path, '0777' );
+					
+		//@chmod ( $the_target_path, '0777' );
 					}
 					$the_target_path1 = $the_target_path;
 					$the_target_path = $the_target_path . $filename;
@@ -7312,8 +7343,8 @@ $w
 					if (is_dir ( $path ) == false) {
 						
 						@mkdir ( $path );
-						
-					//@chmod ( $path, '0777' );
+					
+		//@chmod ( $path, '0777' );
 					}
 					
 					$the_target_path = $target_path . 'pictures/original/';
@@ -7323,8 +7354,8 @@ $w
 					if (is_dir ( $the_target_path ) == false) {
 						
 						@mkdir ( $the_target_path );
-						
-					//@chmod ( $the_target_path, '0777' );
+					
+		//@chmod ( $the_target_path, '0777' );
 					}
 					
 					$the_target_path = $the_target_path . $this->url_title ( $filename, $separator = 'dash', $no_slashes = false, $leave_dots = true );
@@ -7579,7 +7610,7 @@ $w
 			}
 			$this->cleanCacheGroup ( 'media/global' );
 			return $uploaded;
-			
+		
 		//exit ();
 		} else {
 			
@@ -7587,8 +7618,8 @@ $w
 			return false;
 		
 		}
-		
-	//	exit ();
+	
+		//	exit ();
 	}
 	
 	/**
@@ -7639,8 +7670,8 @@ $w
 							if (is_dir ( $path ) == false) {
 								
 								@mkdir ( $path );
-								
-							//@chmod ( $path, '0777' );
+							
+		//@chmod ( $path, '0777' );
 							}
 							
 							$the_target_path = $target_path . 'files/';
@@ -7650,8 +7681,8 @@ $w
 							if (is_dir ( $the_target_path ) == false) {
 								
 								@mkdir ( $the_target_path );
-								
-							//@chmod ( $the_target_path, '0777' );
+							
+		//@chmod ( $the_target_path, '0777' );
 							}
 							
 							$filename = str_ireplace ( "&", 'and', $filename );
@@ -7689,8 +7720,8 @@ $w
 						}
 					
 					} else {
-						
-					//	error_log ( 'Skipping file: ' . $filename . ', because its invalid file type: ' . $filetype . "\n\n" );
+					
+		//	error_log ( 'Skipping file: ' . $filename . ', because its invalid file type: ' . $filetype . "\n\n" );
 					
 
 					}
@@ -7756,7 +7787,7 @@ $w
 			}
 			
 			return $uploaded;
-			
+		
 		//exit ();
 		} else {
 			
@@ -7764,8 +7795,8 @@ $w
 			return false;
 		
 		}
-		
-	//	exit ();
+	
+		//	exit ();
 	}
 	
 	/**
@@ -7816,8 +7847,8 @@ $w
 							if (is_dir ( $path ) == false) {
 								
 								@mkdir ( $path );
-								
-							//@chmod ( $path, '0777' );
+							
+		//@chmod ( $path, '0777' );
 							}
 							
 							$the_target_path = $target_path . 'videos/';
@@ -7827,8 +7858,8 @@ $w
 							if (is_dir ( $the_target_path ) == false) {
 								
 								@mkdir ( $the_target_path );
-								
-							//@chmod ( $the_target_path, '0777' );
+							
+		//@chmod ( $the_target_path, '0777' );
 							}
 							
 							$the_target_path = $the_target_path . $this->url_title ( $filename, $separator = 'dash', $no_slashes = false, $leave_dots = true );
@@ -7924,7 +7955,7 @@ $w
 			}
 			
 			return $uploaded;
-			
+		
 		//exit ();
 		} else {
 			
@@ -7932,8 +7963,8 @@ $w
 			return false;
 		
 		}
-		
-	//	exit ();
+	
+		//	exit ();
 	}
 	
 	function mediaUploadByUrl($url, $to_table, $to_table_id, $queue_id = false, $resize_options = false) {
@@ -8073,8 +8104,8 @@ $w
 						if (is_dir ( $path ) == false) {
 							
 							@mkdir ( $path );
-							
-						//@chmod ( $path, '0777' );
+						
+		//@chmod ( $path, '0777' );
 						}
 						
 						$the_target_path = $target_path . 'pictures/original/';
@@ -8084,8 +8115,8 @@ $w
 						if (is_dir ( $the_target_path ) == false) {
 							
 							@mkdir ( $the_target_path );
-							
-						//@chmod ( $the_target_path, '0777' );
+						
+		//@chmod ( $the_target_path, '0777' );
 						}
 						
 						$the_target_path = $the_target_path . $this->url_title ( $filename, $separator = 'dash', $no_slashes = false, $leave_dots = true );
@@ -8348,8 +8379,8 @@ $w
 			return false;
 		
 		}
-		
-	//	exit ();
+	
+		//	exit ();
 	}
 	
 	/*function cacheDelete($what, $value) {
@@ -9162,8 +9193,8 @@ $w
 		if (is_dir ( $filename ) == false) {
 			
 			if (! $handle = @fopen ( $filename, 'w+b' )) {
-				
-			//echo "Cannot open file ($filename)";
+			
+		//echo "Cannot open file ($filename)";
 			//exit ();
 			}
 		
@@ -9192,10 +9223,10 @@ $w
 			
 			//echo "Cannot write to file ($filename)";
 			return false;
-			
+		
 		//exit;
 		} else {
-			
+		
 		//print "saved: $newfilename";
 		}
 		
@@ -9336,7 +9367,7 @@ $w
 		$table = $cms_db_tables ['table_options'];
 		
 		$this->cleanCacheGroup ( 'options' );
-		$data ['debug'] = 1;
+		//$data ['debug'] = 1;
 		$save = $this->saveData ( $table, $data );
 		
 		return true;
@@ -9729,8 +9760,8 @@ $w
 					$get_option ['option_value2'] = $option ['values'];
 					
 					$save = CI::model ( 'core' )->optionsSave ( $get_option );
-					
-				//p ( $save );
+				
+		//p ( $save );
 				
 
 				}
@@ -9859,7 +9890,7 @@ $w
 				return false;
 			
 			}
-			
+		
 		//return false;
 		
 

@@ -65,8 +65,8 @@ function clean_word($html_to_save) {
 			$html_to_save = str_replace ( '<!--[if gte mso 11]><![endif]-->', '', $html_to_save );
 			$html_to_save = str_replace ( 'class="MsoNormal"', '', $html_to_save );
 		}
-		
-	//		$tags = extract_tags ( $html_to_save, 'style', $selfclosing = false, $return_the_entire_tag = true, $charset = 'UTF-8' );
+	
+		//		$tags = extract_tags ( $html_to_save, 'style', $selfclosing = false, $return_the_entire_tag = true, $charset = 'UTF-8' );
 	//		
 	//		$matches = $tags;
 	//		if (! empty ( $matches )) {
@@ -120,7 +120,7 @@ function url_param_unset($param, $url = false) {
 		$segment = explode ( ':', $segment );
 		
 		if ($segment [0] == $param) {
-			
+		
 		//return $segment [1];
 		} else {
 			
@@ -266,8 +266,8 @@ function add_post_form($params) {
 		print $content_filename;
 	
 	}
-	
-//return $post;
+
+		//return $post;
 }
 function get_custom_fields($content_id) {
 	return get_custom_fields_for_content ( $content_id );
@@ -661,6 +661,7 @@ function get_posts($params = false) {
 		}
 	} else {
 		$posts = $data;
+	
 		//p($data);
 	}
 	
@@ -908,7 +909,8 @@ function get_page($id) {
 	}
 	
 	return $page;
-	//$link = CI::model('content')->getContentURLByIdAndCache ( $link['id'] );
+
+		//$link = CI::model('content')->getContentURLByIdAndCache ( $link['id'] );
 
 
 }
@@ -1048,7 +1050,8 @@ function post_save($data) {
 		
 		if (($user_id == false) and (! empty ( $categories_ids_to_remove )) and (in_array ( $category, $categories_ids_to_remove ) == true)) {
 			exit ( 'Error: You are trying to post to one or more invalid categories!' );
-			//error
+		
+		//error
 		} else {
 			
 			$check_title = array ();
@@ -1133,7 +1136,8 @@ function post_save($data) {
 				$return ['success'] = true;
 				$return ['form_errors'] = false;
 				return $return;
-				//redirect ( 'users/user_action:posts/type:all' );
+			
+		//redirect ( 'users/user_action:posts/type:all' );
 			
 
 			} else {
@@ -1278,6 +1282,7 @@ function category_tree($params) {
 		$page = get_page ( $params ['for_page'] );
 		//p($page);
 		$content_parent = $page ['content_subtype_value'];
+	
 		//$categories = CI::model ( 'taxonomy' )->getCategoriesForContent ( $content_id = $params ['for_content'], $return_only_ids = true );
 	}
 	if ($params ['content_subtype_value'] != false) {
@@ -1289,6 +1294,7 @@ function category_tree($params) {
 		$page = get_page ( $params ['not_for_page'] );
 		//p($page);
 		$remove_ids = array ($page ['content_subtype_value'] );
+	
 		//$categories = CI::model ( 'taxonomy' )->getCategoriesForContent ( $content_id = $params ['for_content'], $return_only_ids = true );
 	}
 	
@@ -1349,8 +1355,8 @@ function get_categories($get_categories_params = array()) {
 		$page = get_page ( $params ['for_page'] );
 		//p($page);
 		$categories = CI::model ( 'taxonomy' )->getChildrensRecursiveAndCache ( $page ['content_subtype_value'], $type = 'category', $visible_on_frontend = false );
-		
-	//$categories = CI::model ( 'taxonomy' )->getCategoriesForContent ( $content_id = $params ['for_content'], $return_only_ids = true );
+	
+		//$categories = CI::model ( 'taxonomy' )->getCategoriesForContent ( $content_id = $params ['for_content'], $return_only_ids = true );
 	} else {
 		
 		if ($params ['for_content'] != false) {
@@ -1630,9 +1636,6 @@ function get_mediaby_id($id) {
 	return $media;
 }
 
-
-
-
 /**
  * get_pictures 
  *
@@ -1652,12 +1655,12 @@ function get_pictures($content_id, $for = 'post') {
 		return false;
 	}
 	
-	 
 	//	p($to_table);
 	// var_dump($id, $for, $media_type, $queue_id, $collection);
-	$media = get_media($content_id,$for, $media_type = 'pictures', $queue_id = false, $collection = false);
-	return $media['pictures'];
-	// p($media);
+	$media = get_media ( $content_id, $for, $media_type = 'pictures', $queue_id = false, $collection = false );
+	return $media ['pictures'];
+
+		// p($media);
 
 
 //p($content_id);
@@ -1665,7 +1668,7 @@ function get_pictures($content_id, $for = 'post') {
 
 }
 
-
+ 
 
 /**
  * get_media 
@@ -1698,13 +1701,15 @@ function get_media($id, $for = 'post', $media_type = false, $queue_id = false, $
 	global $CI;
 	if ($collection == false) {
 		$to_table = CI::model ( 'core' )->guessDbTable ( $for );
+	
 		//
 	}
 	//	p($to_table);
 	// var_dump($id, $for, $media_type, $queue_id, $collection);
 	$media = CI::model ( 'core' )->mediaGet ( $to_table, $content_id, $media_type, $order = "ASC", $queue_id, $no_cache = false, $id = false, $collection );
 	return $media;
-	// p($media);
+
+		// p($media);
 
 
 //p($content_id);

@@ -104,7 +104,7 @@ window.MercurySetup = {
         sep2:                  ' ',
         historyPanel:          ['History', 'Page Version History', { panel: admin_panel+ '/mercury/view:history', preload: false }],
         sep3:                  ' ',
-        notesPanel:            ['Notes', 'Page Notes', { panel: '/mercury/panels/notes.html' }]
+        notesPanel:            ['Admin panel', 'Admin', { modal: admin_panel+ '/mercury/view:admin' }]
         },
 
       editable: {
@@ -347,8 +347,8 @@ window.MercurySetup = {
     // configuration directive.
     injectedStyles: '' +
       '.{{regionClass}} { min-height: 10px; outline: 1px dotted #09F } ' +
-      '.{{regionClass}}:focus, .{{regionClass}}.focus { outline: none; -webkit-box-shadow: 0 0 10px #09F, 0 0 1px #045; box-shadow: 0 0 10px #09F, 0 0 1px #045 }' +
-      '.{{regionClass}}:after { content: "."; display: block; visibility: hidden; clear: both; height: 0; overflow: hidden; }' +
+      '.{{regionClass}}:focus, .{{regionClass}}.focus { outline: none; -webkit-box-shadow: 0 0 1px #09F, 0 0 1px #045; box-shadow: 0 0 1px #09F, 0 0 1px #045 }' +
+     // '.{{regionClass}}:after { content: "."; display: block; visibility: hidden; clear: both; height: 0; overflow: hidden; }' +
       '.{{regionClass}} table, .{{regionClass}} td, .{{regionClass}} th { border: 1px dotted red; min-width: 6px; }' +
       '.mercury-textarea { border: 0; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; resize: none; }' +
       '.mercury-textarea:focus { outline: none; }'
@@ -14004,7 +14004,7 @@ Showdown.converter = function() {
         } else {
           return this.contentElement.css({
             height: height - titleHeight,
-            overflow: 'auto'
+           // overflow: 'auto'
           });
         }
       }, this));
@@ -14050,7 +14050,7 @@ Showdown.converter = function() {
       } else {
         this.contentElement.css({
           height: height - titleHeight,
-          overflow: 'auto'
+         // overflow: 'auto'
         });
       }
       return this.element.css({
@@ -14268,7 +14268,7 @@ Showdown.converter = function() {
           opacity: 1
         }, 200, 'easeInOutSine');
         return this.element.css({
-          overflow: 'auto'
+         // overflow: 'auto'
         });
       }, this));
     },
@@ -14303,7 +14303,7 @@ Showdown.converter = function() {
         left: (viewportWidth - width) / 2,
         width: width,
         height: height,
-        overflow: 'auto'
+       // overflow: 'auto'
       });
       if (this.visible) {
         return this.contentElement.css({
@@ -15791,7 +15791,7 @@ Showdown.converter = function() {
         originalOverflow: this.element.css('overflow')
       });
       this.element.css({
-        overflow: 'auto'
+       // overflow: 'auto'
       });
       this.specialContainer = jQuery.browser.mozilla && this.element.get(0).tagName !== 'DIV';
       this.element.get(0).contentEditable = true;
@@ -16113,7 +16113,7 @@ Showdown.converter = function() {
       if (this.previewing) {
         this.element.get(0).contentEditable = true;
         this.element.css({
-          overflow: 'auto'
+         // overflow: 'auto'
         });
       } else {
         this.content(this.content());

@@ -1,6 +1,4 @@
-<? 
-//p($params);
-?>
+
 <?
 $rand = rand();
     
@@ -60,6 +58,7 @@ $rand = rand();
  //p($media_videos);
 
 ?>
+
 <script type="text/javascript">
 
 	
@@ -249,11 +248,12 @@ $(document).ready(function() {
 <br />
 
 <br />
+
 <div class="gallery_module_sortable_holder <? print $qe_class ?>"  >
   <ul class="gallery_module_sortable_pics<? print $rand ?> <? print $qe_class ?> gallery_module_sortable_pics">
     <?php $i = 1; if(!empty($media1)): ?>
     <?php foreach($media1 as $pic): ?>
-    <?php $thumb = $this->core_model->mediaGetThumbnailForMediaId($pic['id']);
+    <?php  $thumb = $this->core_model->mediaGetThumbnailForMediaId($pic['id']);
  
 ?>
     <li id="picture_id_<?php print $pic['id'] ?>" onclick="load_media_edit_module<? print $rand ?>('<?php print $pic['id'] ?>')">
